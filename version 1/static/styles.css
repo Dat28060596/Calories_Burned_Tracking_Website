@@ -1,0 +1,75 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: url('https://images.pond5.com/blue-running-man-runner-animated-footage-103328315_iconl.jpeg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.header {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 20px;
+}
+
+.header .link {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.header .link:hover {
+    text-decoration: underline;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.form-container {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 40px; /* Increased padding for better aesthetics */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    color: white;
+    width: 400px; /* Increased width */
+}
+
+.form-group {
+    margin-bottom: 20px; /* Increased margin for better spacing */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px; /* Increased margin for better spacing */
+}
+
+.form-group input[type="text"] {
+    width: 100%;
+    padding: 10px; /* Increased padding for better input field */
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.form-group input[type="radio"] {
+    margin-right: 5px;
+}
+
+.form-group button {
+    width: 100%;
+    padding: 15px; /* Increased padding for better button */
+    background: #28a745;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.form-group button:hover {
+    background: #218838;
+}
