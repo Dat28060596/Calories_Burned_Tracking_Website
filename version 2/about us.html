@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            overflow-x: hidden; /* Prevent horizontal overflow */
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            position: relative;
+            z-index: 2;
+            background-color: rgba(255, 255, 255, 0.8); /* Add a background color to make text more readable */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .background-iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .team-member {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .team-member img {
+            border-radius: 50%;
+            margin-right: 20px;
+            width: 150px;
+            height: 150px;
+        }
+        .team-member div {
+            flex: 1;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <iframe class="background-iframe" src="background-for-aboutus.html"></iframe>
+    <div class="container">
+        <h1>About Us</h1>
+        <p>Welcome to our website! We are a passionate team of innovators dedicated to helping you achieve your fitness goals through cutting-edge technology. Our project utilizes data from Arduino Cloud to provide accurate calorie burn calculations, ensuring you have the information you need to optimize your workouts. Meet the team behind the magic:</p>
+
+        <div class="team-member">
+            <img src="423766208_3853020424916404_4076479029123238971_n.jpg" alt="Team Member 1">
+            <div>
+                <h2>Nguyễn Viết Đạt - 10423031</h2>
+                <h3>Role: AWS Developer, Fullstack Developer</h3>
+                <p>Deploy code on AWS, build landing page and about us page, develop algorithm for calories burned calculating.</p>
+            </div>
+        </div>
+
+        <div class="team-member">
+            <img src="449969259_1961740617614561_472970734916638960_n.jpg" alt="Team Member 2">
+            <div>
+                <h2>Nguyễn Nhật Nam - 10423155</h2>
+                <h3>Role: Front-End Developer</h3>
+                <p>Build the main page of website</p>
+            </div>
+        </div>
+
+        <div class="team-member">
+            <img src="path-to-picture3.jpg" alt="Team Member 3">
+            <div>
+                <h2>Team Member 3</h2>
+                <h3>Role: [Role of Team Member 3]</h3>
+                <p>[Brief description of Team Member 3, including background, skills, and contributions to the project.]</p>
+            </div>
+        </div>
+
+        <div class="team-member">
+            <img src="path-to-picture4.jpg" alt="Team Member 4">
+            <div>
+                <h2>Team Member 4</h2>
+                <h3>Role: [Role of Team Member 4]</h3>
+                <p>[Brief description of Team Member 4, including background, skills, and contributions to the project.]</p>
+            </div>
+        </div>
+
+        <h2>Our Mission</h2>
+        <p>Our mission is to leverage technology to make fitness tracking more accurate and accessible. By integrating Arduino Cloud data with our innovative calorie burn calculation algorithm, we aim to provide users with precise insights into their workout efficiency. Join us on our journey to a healthier, more informed lifestyle.</p>
+    </div>
+</body>
+</html>
