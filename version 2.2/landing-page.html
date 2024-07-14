@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calories Burned Tracker</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+
+        .background-iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .title {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            width: 40%;
+            padding: 10px 20px;
+            border: 2px solid white;
+            border-radius: 5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin: 0 auto;
+            display: inline-block; /* Ensure it behaves like a link */
+            text-decoration: none; /* Remove default link underline */
+            color: white;
+            text-align: center;
+        }
+
+        .button:hover {
+            background: white;
+            color: #ffcc66;
+        }
+    </style>
+</head>
+<body>
+    <iframe class="background-iframe" src="koi-fish.html"></iframe>
+    <div class="container">
+        <div class="title">Welcome To Calories Burned Tracking Website</div>
+        <a href="https://calburntracker.auth.ap-southeast-2.amazoncognito.com/oauth2/authorize?client_id=3bpfsvlniqdjoa4856f63c2ujm&response_type=code&scope=email+openid+phone&redirect_uri=https%3A%2F%2Fcalburntracker.d356o095sw0bgu.amplifyapp.com%2F" class="button">Discover</a>
+    </div>
+</body>
+</html>

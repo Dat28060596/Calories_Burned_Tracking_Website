@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calories Burned Tracker</title>
+    <link rel="stylesheet" href="style-for-index.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="header">
+        <nav>
+        <ul>
+            <li ><a href="index.html">Home</a></li>
+            <li ><a href="https://github.com/Dat28060596/Calories_Burned_Tracking_Website.git">Soucre Code</a></li>
+            <li ><a href="about us.html">About Us</a></li>
+            <li ><a href="logout.html">Sign out</a></li>
+        </ul>
+    </nav>
+    </div>
+    <div class="container">
+        <div class="form-container">
+            <form id="caloriesForm">
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="text" id="age" name="age">
+                </div>
+                <div class="form-group">
+                    <label>Gender</label>
+                    <div class="gender">
+                        <div class="gender-option">
+                            <input type="radio" id="male" name="gender" value="male">
+                            <label for="male">Male</label>
+                        </div>
+                        <div class="gender-option">
+                            <input type="radio" id="female" name="gender" value="female">
+                            <label for="female">Female</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="height">Height</label>
+                    <input type="text" id="height" name="height" placeholder="cm">
+                </div>
+                <div class="form-group">
+                    <label for="weight">Weight</label>
+                    <input type="text" id="weight" name="weight" placeholder="kg">
+                </div>
+                <div class="form-group">
+                    <label for="fileInput">Upload CSV File</label>
+                    <input type="file" id="fileInput" accept=".csv">
+                </div>
+                <div class="form-group">
+                    <button type="button" onclick="analyzeCaloriesBurned()">Calculate and Display Graph</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <canvas id="caloriesChart" width="800" height="400"></canvas>
+
+    <script>
+        function analyzeCaloriesBurned() {
+            const fileInput = document.getElementById('fileInput');
+            const weightKg = parseFloat(document.getElementById('weight').value);
+
+            if (!fileInput.files.length || isNaN(weightKg)) {
+                alert("Please select a CSV file and enter a valid weight.");
+                return;
+            }
+
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function(event) {
+                const csvData = event.target.result;
+                const data = parseCSV(csvData);
+                const processedData = processData(data, weightKg);
+                plotCaloriesBurned(processedData.dailyCalories);
+                alert(`Total calories burned: ${processedData.totalCaloriesBurned}`);
+            };
+
+            reader.readAsText(file);
+        }
+
+        function parseCSV(csvData) {
+            const lines = csvData.split('\n');
+            const result = [];
+
+            for (let i = 1; i < lines.length; i++) {
+                const row = lines[i].split(',');
+                if (row.length < 2) continue;
+
+                result.push({
+                    time: new Date(row[0]),
+                    value: parseFloat(row[1])
+                });
+            }
+
+            return result;
+        }
+
+        function processData(data, weightKg) {
+            const MET_values = { sitting: 1.0, walking: 3.3, running: 9.8 };
+
+            for (let i = 1; i < data.length; i++) {
+                data[i].time_diff = (data[i].time - data[i - 1].time) / 1000;
+                data[i].delta_v = (data[i].value * data[i].time_diff) / 10 * 3.6;
+                data[i].MET = getMET(data[i].delta_v, MET_values);
+                data[i].duration_hours = data[i].time_diff / 3600;
+                data[i].calories_burned = data[i].MET * weightKg * data[i].duration_hours / 10;
+            }
+
+            const totalCaloriesBurned = data.reduce((sum, row) => sum + (row.calories_burned || 0), 0);
+            const dailyCalories = data.reduce((acc, row) => {
+                const date = row.time.toISOString().split('T')[0];
+                acc[date] = (acc[date] || 0) + (row.calories_burned || 0);
+                return acc;
+            }, {});
+
+            return { totalCaloriesBurned, dailyCalories };
+        }
+
+        function getMET(velocity, MET_values) {
+            if (velocity < 1.0) {
+                return MET_values.sitting;
+            } else if (velocity < 4.8) {
+                return MET_values.walking;
+            } else {
+                return MET_values.running;
+            }
+        }
+
+        function plotCaloriesBurned(dailyCalories) {
+            const dates = Object.keys(dailyCalories);
+            const calories = dates.map(date => dailyCalories[date]);
+
+            const ctx = document.getElementById('caloriesChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: dates,
+                    datasets: [{
+                        label: 'Calories Burned',
+                        data: calories,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            beginAtZero: true
+                        },
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

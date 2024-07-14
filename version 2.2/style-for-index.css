@@ -1,0 +1,90 @@
+body {
+    background-image: url("449231236_861614385815671_2785646913128478284_n.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: contain;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+nav {
+    background: black;
+    padding: 1rem;
+
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+nav ul li {
+    display: inline;
+}
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    display: block;
+}
+nav ul li a:hover {
+    background-color: navy;
+    border-radius: 5px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.form-container {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 40px; /* Increased padding for better aesthetics */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    color: white;
+    width: 400px; /* Increased width */
+}
+
+.form-group {
+    margin-bottom: 20px; /* Increased margin for better spacing */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px; /* Increased margin for better spacing */
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"] {
+    width: 100%;
+    padding: 10px; /* Increased padding for better input field */
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.gender {
+    display: flex;
+    justify-content: normal;
+}
+
+.gender-option {
+    display: flex;
+    align-items: center;
+}
+
+.form-group button {
+    width: 100%;
+    padding: 15px; /* Increased padding for better button */
+    background: #28a745;
+    border: none;
+    border-radius: 5px;
+    color: white;
+
