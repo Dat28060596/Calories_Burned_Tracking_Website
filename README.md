@@ -34,7 +34,7 @@ In order to save the datas of the user, we develop the login authentication syst
 
 ## Usage
 
-You can access the application by navigating to `[https://calburntracker.d3qr9w35s7m7v6.amplifyapp.com/]` in your web browser.
+You can access the application by navigating to `https://calburntracker.d3qr9w35s7m7v6.amplifyapp.com/` in your web browser.
 
 - Use the landing page to navigate to the login system.
 - Utilize the calorie calculator by entering your details.
